@@ -1,0 +1,16 @@
+<div class="row">
+ <div class="col-sg-12 col-md-12">
+  <h3><%= @user.firstname + " " + @user.lastname %></h3>
+  <hr/>
+  <ul>
+   <li>Email: <%= @user.email %> </li>
+   <li> Role Assigned </li>
+   <ul>
+    <% for user in @user.roles %>
+    <li> <%= user.name %> </li>
+    <% end %>
+   </ul>
+   <li> Times logged in <%= @user.sign_in_count %> </li>
+  </ul>
+ </div>
+</div>

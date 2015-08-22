@@ -1,0 +1,51 @@
+<div class="row">
+ <div class="col-sg-12 col-md-9">
+  <h3> <%= @batch.name %> </h3>
+  <hr/>
+  <div class="well">
+   <p><b>Description:</b> <%= @batch.description %> | <b>Start Date:</b> <%= @batch.start_date %></p>
+  </div>
+  <div class="well">
+   <% if !@batch.users.empty? %>
+   <ul>
+    <% for user in @batch.users %>
+    <li><%= user.firstname %> </li>
+    <% end %>
+   </ul>
+   <% else %>
+   <p> No User found </p>
+   <% end %>
+
+  </div>
+  <div class="row">
+   <%= form_for(@batch) do |f| %>
+
+   <div class="col-sg-3 col-md-3">
+    <%#= f.hidden_field :batch_id, :value => @batch.id %>
+    <%= f.submit "Add Users",:class => 'btn btn-primary' %>
+   </div>
+
+   <div class="col-sg-9 col-md-9">
+    <table class="table table-bordered">
+     <tr>
+      <th>Name</th>
+      <th>Add</th>
+     </tr>
+     <% for user in @users %>
+     <tr>
+      <td> <%= user.firstname + " " + user.lastname %></td>
+      <td> <%= check_box_tag 'batch[user_ids][]', user.id, @batch.user_ids.include?(user), :id => dom_id(user) %>
+      <%= label_tag dom_id(user), user.firstname %>
+      </td>
+     </tr>
+     <% end %>
+    </table>
+    <% end %>
+   </div>
+  </div>
+ </div>
+ <div class="col-sg-12 col-md-3">
+  <h3> Videos </h3>
+
+ </div>
+</div>

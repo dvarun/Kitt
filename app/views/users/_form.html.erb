@@ -1,0 +1,45 @@
+<%= form_for(@user) do |f| %>
+
+<% if @user.errors.any? %>
+<div class="alert alert-danger">
+ <h3> Errors from saving the <%= @user.class %> </h3>
+ <ul>
+  <% for msg in @user.errors.full_messages %>
+  <li> <%= msg %></li>
+  <% end %>
+ </ul>
+</div>
+<% end %>
+
+
+
+<div class="form-group">
+ <label>Firtname: </label>
+ <%= f.text_field :firstname %>
+</div>
+
+<div class="form-group">
+ <label>Lastname: </label>
+ <%= f.text_field :lastname %>
+</div>
+
+<div class="form-group">
+ <label>Email: </label>
+ <%= f.email_field :email %>
+</div>
+
+<div class="form-group">
+ <label>password: </label>
+ <%= f.password_field :password %>
+</div>
+
+<div class="form-group">
+ <%= fields_for :permission do |permission_fields| %>
+   <label> Role </label>  : <%= permission_fields.collection_select :role_id,Role.all,:id,:name,prompt: "Select Role" %>
+  <% end %>
+</div>
+
+<div class="form-group">
+ <%= f.submit %>
+</div>
+<% end %>

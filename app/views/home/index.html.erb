@@ -1,0 +1,74 @@
+<div class="row">
+ <div class="col-sg-12 col-md-12">
+  <h3> Welcome <%= current_user.firstname %></h3>
+  <hr/>
+ </div>
+</div>
+<div class="row">
+ <% if can? :manage, :all %>
+ <div class="col-sg-6 col-md-6">
+  <div class="list-group">
+   <div class="list-group-item">
+    <div class="row-action-primary">
+     <i class="mdi-social-person-add"></i>
+    </div>
+    <div class="row-content">
+     <p><!-- leave it blank just for spacing --></p>
+     <h4 class="list-group-item-heading no-url-effect"><%= link_to "Create User", new_user_path %></h4>
+    </div>
+   </div>
+  </div>
+  <div class="list-group">
+   <div class="list-group-item">
+    <div class="row-action-primary">
+     <i class="mdi-action-assignment"></i>
+    </div>
+    <div class="row-content">
+     <p><!-- leave it blank just for spacing --></p>
+     <h4 class="list-group-item-heading no-url-effect"><%= link_to "Create batch", new_batch_path %></h4>
+    </div>
+   </div>
+  </div>
+ </div><!-- end of col-xx-6 -->
+ <div class="col-sg-6 col-md-6">
+  <div class="list-group">
+   <div class="list-group-item">
+    <div class="row-action-primary">
+     <i class="mdi-action-perm-contact-cal"></i>
+    </div>
+    <div class="row-content">
+     <p><!-- leave it blank just for spacing --></p>
+     <h4 class="list-group-item-heading no-url-effect"><%= link_to "List Users",users_path %></h4>
+    </div>
+   </div>
+  </div>
+  <div class="list-group">
+   <div class="list-group-item">
+    <div class="row-action-primary">
+     <i class="mdi-action-work"></i>
+    </div>
+    <div class="row-content">
+     <p><!-- leave it blank just for spacing --></p>
+     <h4 class="list-group-item-heading no-url-effect"><%= link_to "List Batches", batches_path %></h4>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <% else %>
+
+ <div class="col-sg-12 col-md-12">
+  <div class="well">
+   <h4>Personal Information</h4>
+   <ul>
+    <li> Times logged in <%= @user.sign_in_count %> </li>
+   </ul>
+
+  </div>
+
+
+ </div>
+
+ <% end %>
+
+</div> <!-- end of 1 row -->

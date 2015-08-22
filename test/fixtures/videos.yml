@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  tag: MyString
+  file_size: 1.5
+  description: MyString
+  batch_id: 1
+  file_path: 1
+  user_id: 1
+
+two:
+  name: MyString
+  tag: MyString
+  file_size: 1.5
+  description: MyString
+  batch_id: 1
+  file_path: 1
+  user_id: 1
