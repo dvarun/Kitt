@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817102332) do
+ActiveRecord::Schema.define(version: 20150823064306) do
 
   create_table "batch_users", force: :cascade do |t|
     t.integer  "user_id"
@@ -85,10 +85,14 @@ ActiveRecord::Schema.define(version: 20150817102332) do
     t.float    "file_size"
     t.string   "description"
     t.integer  "batch_id"
-    t.integer  "file_path"
+    t.string   "file_path"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "content_file_name"
+    t.string   "content_content_type"
+    t.integer  "content_file_size"
+    t.datetime "content_updated_at"
   end
 
 end
