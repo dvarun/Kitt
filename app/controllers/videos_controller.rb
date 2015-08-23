@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
 
 def new
-@video = Video.new
+ @video = Video.new
 end
 
  def create
@@ -15,9 +15,13 @@ end
   end
  end
 
+ def show
+   @video = Video.find(params[:id])
+ end
+
  private
  def video_params
-   params[:video].permit(:name,:batch_id,:file_path)
+   params[:video].permit(:name,:batch_id,:file_path,:content)
  end
 
 end
