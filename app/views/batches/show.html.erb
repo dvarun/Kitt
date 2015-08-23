@@ -41,9 +41,21 @@
      <% end %>
     </table>
     <% end %>
+
    </div>
   </div>
+  <div class="row">
+   <%= <%= form_for(@video, :html => {:multipart => true})  do |f| %>
+   <div class="form-group">
+   <label> Video </label>
+     <%= f.file_field :field_1, class: "form-control" %>
+    </div>
+   <% end %>
+  </div>
+
  </div>
+
+ <!-- this is side bar area -->
  <div class="col-sg-12 col-md-3">
   <h3> Videos </h3>
 

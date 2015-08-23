@@ -37,7 +37,7 @@ class BatchesController < ApplicationController
   def show
    @batch = Batch.find(params[:id])
    @users = User.all
-   @batch_user = BatchUser.new
+   @video = Video.new
   end
 
   def destroy
