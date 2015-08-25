@@ -7,11 +7,18 @@
   </div>
   <div class="well">
    <% if !@batch.users.empty? %>
-   <ul>
+   <table class="table">
+    <tr>
+     <th>Name</th>
+     <th colspan="2">Actions</th>
+    </tr>
     <% for user in @batch.users %>
-    <li><%= user.firstname %> </li>
+    <tr>
+     <td><%= user.firstname + " " + user.lastname %> </td>
+     <td><%=link_to "Delete", user_path(project.id), method: :delete, data:{confirm: "Are you sure to delete"}  %></td>
+    </tr>
     <% end %>
-   </ul>
+   </table>
    <% else %>
    <p> No User found </p>
    <% end %>
@@ -48,17 +55,15 @@
    <div class="col-sg-12 col-md-12">
     <%= form_for(@video, :html => {:multipart => true})  do |f| %>
     <% if @video.errors.any? %>
-     <div class="alert alert-danger">
-       <h3> Errors from saving the <%= @video.class %> </h3>
-          <ul>
-             <% for msg in @video.errors.full_messages %>
-                <li> <%= msg %></li>
-             <% end %>
-         </ul>
+    <div class="alert alert-danger">
+     <h3> Errors from saving the <%= @video.class %> </h3>
+     <ul>
+      <% for msg in @video.errors.full_messages %>
+      <li> <%= msg %></li>
+      <% end %>
+     </ul>
     </div>
     <% end %>
-
-
 
     <div class="form-group">
      <label>Upload a Video </label>
