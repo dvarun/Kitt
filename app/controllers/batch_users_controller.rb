@@ -11,6 +11,13 @@ class BatchUsersController < ApplicationController
  end
 
 
+ def destroy
+   @batch_users = BatchUser.find_by(user_id: params[:id])
+   @batch_users.destroy
+   redirect_to batches_path, notice: "successfully Deleted the user"
+ end
+
+
  private
  def batchuser_params
   params[:batch_user].permit(:batch_id,:user_id=>[])
