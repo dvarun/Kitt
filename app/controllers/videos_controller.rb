@@ -21,7 +21,6 @@ end
 
 
 
-
  private
  def video_params
    params[:video].permit(:name,:batch_id,:file_path,:content)

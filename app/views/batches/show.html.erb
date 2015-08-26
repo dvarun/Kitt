@@ -42,7 +42,7 @@
      <tr>
       <td> <%= user.firstname + " " + user.lastname %></td>
       <td> <%= check_box_tag 'batch[user_ids][]', user.id, @batch.user_ids.include?(user), :id => dom_id(user) %>
-       <%= label_tag dom_id(user), user.firstname %>
+       <%#= label_tag dom_id(user), user.firstname %>
       </td>
      </tr>
      <% end %>
