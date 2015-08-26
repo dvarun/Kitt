@@ -27,8 +27,7 @@ class BatchesController < ApplicationController
  def update
   @batch = Batch.find(params[:id])
 
-  if @batch.update_attributes(batch_student_params)
-   #redirect_to clients_path, notice: "Successfully updated the task detail for the client"
+  if @batch.update_attributes(batch_params)
    redirect_to batches_path, notice: "successfully Editted batch"
   else
    render action:"edit"
@@ -52,10 +51,5 @@ class BatchesController < ApplicationController
  def batch_params
   params[:batch].permit(:name,:description,:start_date,:user_ids=>[])
  end
-
- def batch_student_params
-  params[:batch].permit(:user_ids=>[])
- end
-
 
 end

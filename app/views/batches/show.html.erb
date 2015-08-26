@@ -28,7 +28,7 @@
    <%= form_for(@batch) do |f| %>
 
    <div class="col-sg-3 col-md-3">
-    <%#= f.hidden_field :batch_id, :value => @batch.id %>
+    <%= f.hidden_field :batch_id, :value => @batch.id %>
     <%= f.submit "Add Users",:class => 'btn btn-primary' %>
    </div>
 

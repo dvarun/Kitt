@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :batches
+  resources :comments
 
   resources :batch_users
   resources :videos
