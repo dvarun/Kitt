@@ -16,16 +16,13 @@ class ApplicationController < ActionController::Base
   devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :firstname, :lastname) }
  end
 
- #### must add if using cancan otherwise no data will get inserted
+ #### must add if using cancan otherwise no data will get inserted/updated
  	before_filter do
  	  resource = controller_name.singularize.to_sym
  	  method = "#{resource}_params"
  	  params[resource] &&= send(method) if respond_to?(method, true)
  	end
   #### end of important
-
-
-
 
  def is_admin?
   current_user.roles.pluck(:name).include?("ADMIN") || current_user.roles.pluck(:name).include?("admin")

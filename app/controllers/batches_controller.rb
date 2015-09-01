@@ -37,8 +37,9 @@ class BatchesController < ApplicationController
  def show
   @batch = Batch.find(params[:id])
   @users = User.all
+  #@users = BatchUser.joins(:batch).where("batches.id != ?",@batch.id)
   @video = Video.new
-  @videos = Video.where("batch_id = ?",@batch.id)
+  @videos = Video.where("batch_id = ?",@batch.id)  
  end
 
  def destroy

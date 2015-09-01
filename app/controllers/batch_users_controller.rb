@@ -18,6 +18,23 @@ class BatchUsersController < ApplicationController
   redirect_to batches_path, notice: "successfully Deleted the user"
  end
 
+ def add_user_in_batch
+  @batch_user = BatchUser.new
+  @batch_user.batch_id = params[:batch_id]
+  @batch_user.user_id = params[:user_id]
+  if @batch_user.save
+   redirect_to batches_path, notice: "successfully added new student"
+  else
+   render action: "new"
+  end
+ end
+
+ def delete_user_in_batch
+  @batch_user = BatchUser.where("batch_id = ? AND user_id= ?",params[:batch_id],params[:user_id])
+  @batch_user.destroy_all
+  redirect_to batches_path, notice: "successfully Deleted the user"
+ end
+
 
  private
  def batchuser_params

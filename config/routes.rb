@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'home/index'
 
+  get 'batch_users/add_user_in_batch'
+  get 'batch_users/delete_user_in_batch'
 
   devise_for :users
 

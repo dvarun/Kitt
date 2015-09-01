@@ -19,6 +19,7 @@ end
    @video = Video.find(params[:id])
    @comment = Comment.new
    @comments = Comment.where("video_id = ?",@video.id)
+   @videos = Video.where("batch_id = ?",@video.batch_id)
  end
 
 

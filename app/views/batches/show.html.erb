@@ -6,6 +6,7 @@
    <p><b>Description:</b> <%= @batch.description %> | <b>Start Date:</b> <%= @batch.start_date %></p>
   </div>
   <div class="well">
+   <h3>List of student in Batch </h3>
    <% if !@batch.users.empty? %>
    <table class="table">
     <tr>
@@ -15,24 +16,17 @@
     <% for user in @batch.users %>
     <tr>
      <td><%= user.firstname + " " + user.lastname %> </td>
-     <td><%=link_to "Delete", batch_user_path(user.id), method: :delete, data:{confirm: "Are you sure to delete"}  %></td>
+     <td><%=link_to "Delete",batch_users_delete_user_in_batch_path(user_id: user.id,batch_id: @batch.id), data:{confirm: "Are you sure to delete"}  %></td>
     </tr>
     <% end %>
    </table>
    <% else %>
    <p> No User found </p>
    <% end %>
-
   </div>
   <div class="row">
-   <%= form_for(@batch) do |f| %>
-
-   <div class="col-sg-3 col-md-3">
-    <%= f.hidden_field :batch_id, :value => @batch.id %>
-    <%= f.submit "Add Users",:class => 'btn btn-primary' %>
-   </div>
-
-   <div class="col-sg-9 col-md-9">
+   <div class="col-sg-12 col-md-12">
+    <h3> Add user to batch </h3>
     <table class="table table-bordered">
      <tr>
       <th>Name</th>
@@ -40,15 +34,12 @@
      </tr>
      <% for user in @users %>
      <tr>
-      <td> <%= user.firstname + " " + user.lastname %></td>
-      <td> <%= check_box_tag 'batch[user_ids][]', user.id, @batch.user_ids.include?(user), :id => dom_id(user) %>
-       <%#= label_tag dom_id(user), user.firstname %>
-      </td>
+      <td><%= user.firstname + " " + user.lastname %></td>
+      <!-- <i class="mdi-content-add"></i> -->
+      <td><%= link_to '+', batch_users_add_user_in_batch_path(user_id: user.id,batch_id: @batch.id)%></td>
      </tr>
-     <% end %>
+     <%end%>
     </table>
-    <% end %>
-
    </div>
   </div>
   <div class="row">
