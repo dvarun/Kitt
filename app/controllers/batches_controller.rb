@@ -39,7 +39,7 @@ class BatchesController < ApplicationController
   @users = User.all
   #@users = BatchUser.joins(:batch).where("batches.id != ?",@batch.id)
   @video = Video.new
-  @videos = Video.where("batch_id = ?",@batch.id)  
+  @videos = Video.where("batch_id = ?",@batch.id)
  end
 
  def destroy
@@ -47,7 +47,7 @@ class BatchesController < ApplicationController
   @batch.destroy
   redirect_to :back, notice: "successfully Deleted the user"
  end
-
+ 
  private
  def batch_params
   params[:batch].permit(:name,:description,:start_date,:user_ids=>[])

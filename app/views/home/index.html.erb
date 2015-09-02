@@ -58,17 +58,13 @@
  <% else %>
 
  <div class="col-sg-12 col-md-12">
-  <div class="well">
-   <h4>Personal Information</h4>
-   <ul>
-    <li> Times logged in <%= @user.sign_in_count %> </li>
-   </ul>
+  <div>
+   <h4>List of classes enrolled</h4>
+   <% for batch in @batches %>
+   <%= batch.name %>
+   <% end %>
+   <!-- <li> Times logged in <%= @user.sign_in_count %> </li> -->
   </div>
-
-  <b>Batch Belongs to</b><br/>
-  <%= @batch.name %>
-
-
  </div>
 
  <% end %>
