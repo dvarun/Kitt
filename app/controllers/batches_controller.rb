@@ -1,6 +1,7 @@
 class BatchesController < ApplicationController
  before_filter :authenticate_user!
  load_and_authorize_resource
+ skip_authorize_resource :only => :batch_videos
 
  def index
   @batches = Batch.all
@@ -47,7 +48,17 @@ class BatchesController < ApplicationController
   @batch.destroy
   redirect_to :back, notice: "successfully Deleted the user"
  end
- 
+
+ def batch_videos
+  if !params[:id].nil?
+   @batch = Batch.find(params[:id])
+   @video = Video.where("batch_id = ?",@batch.id)
+  else
+   #return empty array to show there's no video
+   @video = []
+  end
+ end
+
  private
  def batch_params
   params[:batch].permit(:name,:description,:start_date,:user_ids=>[])

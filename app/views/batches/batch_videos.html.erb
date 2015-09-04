@@ -1,0 +1,21 @@
+<% if can? :read, Video %>
+<div class="row">
+ <div class="col-sg-12 col-md-12">
+  <h3>List of Videos</h3>
+  <hr/>
+  <% if !@video.empty? %>
+  <% for video in @video %>
+  <%= link_to "#{video.name}", video_path(video.id) %><br/>
+  <% end %>
+  <% else %>
+  No Video Available!
+  <% end %>
+ </div>
+</div>
+<% else %>
+<div class="row">
+ <div class="col-sg-12 col-md-12">
+  Sorry you're not allowed to access
+ </div>
+</div>
+<% end %>

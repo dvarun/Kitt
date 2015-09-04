@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'batch_users/add_user_in_batch'
   get 'batch_users/delete_user_in_batch'
 
+  get 'batches/batch_videos'
+
   devise_for :users
 
   scope "/admin" do

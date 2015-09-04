@@ -28,4 +28,8 @@ class ApplicationController < ActionController::Base
   current_user.roles.pluck(:name).include?("ADMIN") || current_user.roles.pluck(:name).include?("admin")
  end
 
+ def is_student?
+  current_user.roles.pluck(:name).include?("STUDENT") || current_user.roles.pluck(:name).include?("student")
+ end
+
 end

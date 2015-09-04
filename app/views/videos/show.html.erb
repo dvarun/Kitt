@@ -52,10 +52,10 @@
     <h3> Videos </h3>
     <% for video in @videos %>
     <% if video.content? %>
-    <%= video.name %>
+    <%= link_to "#{video.name}", video_path(video.id) %>
     <%#= video.content.url %>
     <% else %>
-    <%= video.name %>
+    <%= link_to "#{video.name}", video_path(video.id) %>
     <%#= video.file_path %>
     <% end %>
     <br/>
