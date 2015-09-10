@@ -38,6 +38,21 @@ class VideosController < ApplicationController
  end
 
 
+ def edit
+   @video = Video.find(params[:id])
+ end
+
+ def update
+   @video = Video.find(params[:id])
+   if @video.update_attributes(video_params)
+     #redirect_to clients_path, notice: "Successfully updated the task detail for the client"
+     redirect_to batch_path(@video.batch_id), notice: "successfully updated Video"
+   else
+     render action:"edit"
+   end
+ end
+
+
  private
  def video_params
   params[:video].permit(:name,:batch_id,:file_path,:content)

@@ -89,14 +89,14 @@ $(document).ready(function(){
  <!-- this is side bar area -->
  <div class="col-sg-12 col-md-3">
   <h3> Videos </h3>
+  <table class="table table-hover">
   <% for video in @videos %>
-  <% if video.content? %>
-  <%= link_to "#{video.name}", video_path(video.id) %> | <%= link_to "Delete", video_path(video.id),method: :delete, data:{confirm: "Are you sure to delete this video?"} %><br/>
-  <%#= video.content.url %>
-  <% else %>
-  <%= link_to "#{video.name}", video_path(video.id) %> | <%= link_to "Delete", video_path(video.id),method: :delete, data:{confirm: "Are you sure to delete this video?"} %><br/>
+  <tr>
+   <td><%= link_to "#{video.name}", video_path(video.id) %></td>
+   <td><%= link_to "Edit", edit_video_path(video.id)%> </td>
+   <td><%= link_to "Delete", video_path(video.id),method: :delete, data:{confirm: "Are you sure to delete this video?"} %></td>
+  </tr>
   <% end %>
-  <hr/>
-  <% end %>
+ </table>
  </div>
 </div>
