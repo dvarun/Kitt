@@ -23,7 +23,10 @@ class BatchUsersController < ApplicationController
   @batch_user.batch_id = params[:batch_id]
   @batch_user.user_id = params[:user_id]
   if @batch_user.save
-   redirect_to batches_path, notice: "successfully added new student"
+   respond_to do |format|
+				format.html {redirect_to batches_path, notice: "successfully added new student"}
+				format.js {render 'batches/add_user_in_batch.js.erb'}
+			end
   else
    render action: "new"
   end
@@ -32,7 +35,7 @@ class BatchUsersController < ApplicationController
  def delete_user_in_batch
   @batch_user = BatchUser.where("batch_id = ? AND user_id= ?",params[:batch_id],params[:user_id])
   @batch_user.destroy_all
-  redirect_to batches_path, notice: "successfully Deleted the user"
+   redirect_to batch_path(params[:batch_id]), notice: "successfully Deleted the user"
  end
 
 

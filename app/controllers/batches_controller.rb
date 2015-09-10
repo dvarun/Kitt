@@ -37,7 +37,13 @@ class BatchesController < ApplicationController
 
  def show
   @batch = Batch.find(params[:id])
-  @users = User.all
+
+  user = [] #declare empty array to store existing user
+  for users in @batch.users
+   user << users.id
+  end
+  @users = User.where("id not in (?)",user)
+
   #@users = BatchUser.joins(:batch).where("batches.id != ?",@batch.id)
   @video = Video.new
   @videos = Video.where("batch_id = ?",@batch.id)

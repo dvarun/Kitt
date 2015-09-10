@@ -1,3 +1,8 @@
+<%= javascript_tag do %>
+$(document).ready(function(){
+  $("#user-add").hide();
+ });
+<% end %>
 <div class="row">
  <div class="col-sg-12 col-md-9">
   <h3> <%= @batch.name %> </h3>
@@ -8,7 +13,7 @@
   <div class="well">
    <h3>List of student in Batch </h3>
    <% if !@batch.users.empty? %>
-   <table class="table">
+   <table class="table" id="list-of-student">
     <tr>
      <th>Name</th>
      <th colspan="2">Actions</th>
@@ -16,7 +21,7 @@
     <% for user in @batch.users %>
     <tr>
      <td><%= user.firstname + " " + user.lastname %> </td>
-     <td><%=link_to "Delete",batch_users_delete_user_in_batch_path(user_id: user.id,batch_id: @batch.id), data:{confirm: "Are you sure to delete"}  %></td>
+     <td><%=link_to "Delete",batch_users_delete_user_in_batch_path(user_id: user.id,batch_id: @batch.id), data:{confirm: "Are you sure to delete"} %></td>
     </tr>
     <% end %>
    </table>
@@ -26,6 +31,7 @@
   </div>
   <div class="row">
    <div class="col-sg-12 col-md-12">
+    <div id="user-add" class="alert alert-success"><b> User added successfully </b> </div>
     <h3> Add user to batch </h3>
     <table class="table table-bordered">
      <tr>
@@ -33,10 +39,10 @@
       <th>Add</th>
      </tr>
      <% for user in @users %>
-     <tr>
+     <tr id="user_<%= user.id %>">
       <td><%= user.firstname + " " + user.lastname %></td>
       <!-- <i class="mdi-content-add"></i> -->
-      <td><%= link_to '+', batch_users_add_user_in_batch_path(user_id: user.id,batch_id: @batch.id)%></td>
+      <td><%= link_to '+', batch_users_add_user_in_batch_path(user_id: user.id,batch_id: @batch.id),remote: true %></td>
      </tr>
      <%end%>
     </table>
@@ -85,11 +91,11 @@
   <h3> Videos </h3>
   <% for video in @videos %>
   <% if video.content? %>
-  <%= video.content.url %>
+  <%= link_to "#{video.name}", video_path(video.id) %> | <%= link_to "Delete", video_path(video.id),method: :delete, data:{confirm: "Are you sure to delete this video?"} %><br/>
+  <%#= video.content.url %>
   <% else %>
-  <%= video.file_path %>
+  <%= link_to "#{video.name}", video_path(video.id) %> | <%= link_to "Delete", video_path(video.id),method: :delete, data:{confirm: "Are you sure to delete this video?"} %><br/>
   <% end %>
-  <br/>
   <hr/>
   <% end %>
  </div>

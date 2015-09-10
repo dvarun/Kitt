@@ -2,7 +2,7 @@ class VideosController < ApplicationController
 
  before_filter :authenticate_user!
  load_and_authorize_resource
- 
+
  def index
 
  end
@@ -23,12 +23,19 @@ class VideosController < ApplicationController
  end
 
  def show
-  @video = Video.find(params[:id])
-  @comment = Comment.new
-  @comments = Comment.where("video_id = ?",@video.id)
-  @videos = Video.where("batch_id = ?",@video.batch_id)
+   @video = Video.find(params[:id])
+   @comment = Comment.new
+   @comments = Comment.where("video_id = ?",@video.id)
+   @videos = Video.where("batch_id = ?",@video.batch_id)
+
  end
 
+ def destroy
+  @video = Video.find(params[:id])
+  @video.content.destroy
+  @video.destroy
+  redirect_to batch_path(@video.batch_id), notice: "successfully Deleted the Video"
+ end
 
 
  private
