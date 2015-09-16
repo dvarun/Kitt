@@ -30,9 +30,9 @@ gem 'cancan'
 gem 'chartkick'
 
 #paper clip
-gem "paperclip", "~> 4.3"
+gem "paperclip", "~> 4.2.4"
 
-gem 'paperclip-av-transcoder'
+#gem 'paperclip-av-transcoder'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
