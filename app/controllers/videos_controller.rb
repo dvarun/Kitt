@@ -15,6 +15,7 @@ class VideosController < ApplicationController
   @video = Video.new(video_params)
   @video.user_id = current_user.id
   if @video.save
+     #@video.convert
    #redirect_to project_path(@task.project_id), notice: "Successfully added new task"
    redirect_to batch_path(@video.batch_id), notice: "successfully added new video"
   else
@@ -27,7 +28,6 @@ class VideosController < ApplicationController
    @comment = Comment.new
    @comments = Comment.where("video_id = ?",@video.id)
    @videos = Video.where("batch_id = ?",@video.batch_id)
-
  end
 
  def destroy
@@ -58,4 +58,10 @@ class VideosController < ApplicationController
   params[:video].permit(:name,:batch_id,:file_path,:content)
  end
 
+ # def convert_to_flv(file_path)
+ #     movie = FFMPEG::Movie.new(file_path)
+ #     options = "-threads 2 -s 320x240 -r 30.00 -threads 1 -pix_fmt yuv420p -g 300 -qmin 3 -b 512k -async 50 -acodec libmp3lame -ar 11025 -ac 1 -ab 16k"
+ #     movie.transcode("/path/to/directory/output.flv", options)
+ #   end
+ 
 end

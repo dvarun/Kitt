@@ -29,7 +29,7 @@ class BatchesController < ApplicationController
   @batch = Batch.find(params[:id])
 
   if @batch.update_attributes(batch_params)
-   redirect_to batches_path, notice: "successfully Editted batch"
+   redirect_to batches_path, notice: "Successfully editted batch"
   else
    render action:"edit"
   end
@@ -52,7 +52,7 @@ class BatchesController < ApplicationController
  def destroy
   @batch = Batch.find(params[:id])
   @batch.destroy
-  redirect_to :back, notice: "successfully Deleted the user"
+  redirect_to :back, notice: "Successfully deleted the user"
  end
 
  def batch_videos
