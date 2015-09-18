@@ -17,7 +17,7 @@
       <tr>
         <td><%= batch.name %></td>
         <td><%= batch.description %></td>
-        <td><%= batch.start_date %></td>
+        <td><%= batch.start_date.strftime("%d %B %Y") %></td>
         <td><%= link_to "Show" ,batch_path(batch.id)%></td>
         <td><%= link_to "Edit", edit_batch_path(batch.id) %></td>
         <td><%= link_to "Delete",batch_path(batch.id), method: :delete, data:{confirm: "Are you sure to delete this Batch?"}  %></td>

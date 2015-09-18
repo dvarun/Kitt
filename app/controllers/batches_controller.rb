@@ -42,6 +42,7 @@ class BatchesController < ApplicationController
   for users in @batch.users
    user << users.id
   end
+  user << 1 #this one for avoiding the admin user
   @users = User.where("id not in (?)",user)
 
   #@users = BatchUser.joins(:batch).where("batches.id != ?",@batch.id)
