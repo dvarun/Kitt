@@ -1,45 +1,63 @@
-<%= form_for(@user) do |f| %>
+<div class="row">
+ <div class="col-md-12">
+  <%= form_for @user,html: {:class => 'form-horizontal'} do |f| %>
 
-<% if @user.errors.any? %>
-<div class="alert alert-danger">
- <h3> Errors from saving the <%= @user.class %> </h3>
- <ul>
-  <% for msg in @user.errors.full_messages %>
-  <li> <%= msg %></li>
+  <% if @user.errors.any? %>
+  <div class="alert alert-danger">
+   <h3> Errors from saving the <%= @user.class %> </h3>
+   <ul>
+    <% for msg in @user.errors.full_messages %>
+    <li> <%= msg %></li>
+    <% end %>
+   </ul>
+  </div>
   <% end %>
- </ul>
-</div>
-<% end %>
 
 
 
-<div class="form-group">
- <label>Firtname: </label>
- <%= f.text_field :firstname %>
-</div>
+  <div class="form-group">
+   <label class="col-lg-1 control-label">Firtname: </label>
+   <div class="col-lg-4">
+    <%= f.text_field :firstname,class: "form-control" %>
+   </div>
+  </div>
 
-<div class="form-group">
- <label>Lastname: </label>
- <%= f.text_field :lastname %>
-</div>
+  <div class="form-group">
+   <label class="col-lg-1 control-label">Lastname: </label>
+   <div class="col-lg-4">
+    <%= f.text_field :lastname,class: "form-control" %>
+   </div>
+  </div>
 
-<div class="form-group">
- <label>Email: </label>
- <%= f.email_field :email %>
-</div>
+  <div class="form-group">
+   <label class="col-lg-1 control-label">Email: </label>
+   <div class="col-lg-4">
+    <%= f.email_field :email,class: "form-control" %>
+   </div>
+  </div>
 
-<div class="form-group">
- <label>password: </label>
- <%= f.password_field :password %>
-</div>
+  <div class="form-group">
+   <label class="col-lg-1 control-label">password: </label>
+   <div class="col-lg-4">
+    <%= f.password_field :password,class: "form-control" %>
+   </div>
+  </div>
 
-<div class="form-group">
- <%= fields_for :permission do |permission_fields| %>
-   <label> Role </label>  : <%= permission_fields.collection_select :role_id,Role.all,:id,:name,prompt: "Select Role" %>
+  <div class="form-group">
+   <%= fields_for :permission do |permission_fields| %>
+   <label class="col-lg-1 control-label"> Role: </label>
+   <div class="col-lg-4">
+    <%#= permission_fields.collection_select :role_id,Role.all,:id,:name,prompt: "Select Role" %>
+    <%= permission_fields.collection_select( :role_id,Role.all, :id, :name, {:prompt => "Select Role"} ,{:class => "form-control"}) %>
+   </div>
+   <% end %>
+  </div>
+
+  <div class="form-group">
+   <div class="col-lg-1">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+   </div>
+  </div>
   <% end %>
+ </div>
 </div>
-
-<div class="form-group">
- <%= f.submit %>
-</div>
-<% end %>

@@ -1,30 +1,45 @@
-<%= form_for(@batch) do |f| %>
+<div class="row">
+ <div class="col-md-12">
+  <%= form_for @batch,html: {:class => 'form-horizontal'} do |f| %>
+  <% if @batch.errors.any? %>
 
-<% if @batch.errors.any? %>
- <div class="alert alert-danger">
-   <h3> Errors from saving the <%= @batch.class %> </h3>
-      <ul>
-         <% for msg in @batch.errors.full_messages %>
-            <li> <%= msg %></li>
-         <% end %>
-     </ul>
+   <div class="alert alert-danger">
+    <h3> Errors from saving the <%= @batch.class %> </h3>
+    <ul>
+     <% for msg in @batch.errors.full_messages %>
+     <li> <%= msg %></li>
+     <% end %>
+    </ul>
+   </div>
+  
+  <% end %>
+  <div class="form-group">
+   <label class="col-lg-1 control-label">Name: </label>
+   <div class="col-lg-4">
+    <%= f.text_field :name,class: "form-control" %>
+   </div>
+  </div>
+
+  <div class="form-group">
+   <label class="col-lg-1 control-label">Description: </label>
+   <div class="col-lg-4">
+    <%= f.text_area :description,cols: 40, rows: 4,class: "form-control" %>
+   </div>
+  </div>
+
+  <div class="form-group">
+   <label class="col-lg-1 control-label">Start Date </label>
+   <div class="col-lg-4">
+    <%#= f.date_select :start_date, order: [:day, :month, :year], include_blank: true, start_year: Date.today.year,:class => "from-control" %>
+    <%= f.date_select :start_date, { :order => [:day, :month, :year], :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year'} }, {:class => "form-control"} %>
+   </div>
+  </div>
+  <div class="form-group">
+   <div class="col-lg-1">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+   </div>
+  </div>
+  <% end %>
+ </div>
 </div>
-<% end %>
-
-
-
-<label>Name: </label>
-<%= f.text_field :name %>
-<br />
-
-<label>Description </label>
-<%= f.text_area :description,cols: 40, rows: 4 %>
-<br />
-
-<label>Start Date </label>
-<%= f.date_select :start_date, order: [:day, :month, :year], include_blank: true, start_year: Date.today.year%>
-<br />
-
-<%= f.submit %>
-
-<% end %>
+<br/>

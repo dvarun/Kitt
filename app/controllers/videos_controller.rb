@@ -58,10 +58,4 @@ class VideosController < ApplicationController
   params[:video].permit(:name,:batch_id,:file_path,:content)
  end
 
- # def convert_to_flv(file_path)
- #     movie = FFMPEG::Movie.new(file_path)
- #     options = "-threads 2 -s 320x240 -r 30.00 -threads 1 -pix_fmt yuv420p -g 300 -qmin 3 -b 512k -async 50 -acodec libmp3lame -ar 11025 -ac 1 -ab 16k"
- #     movie.transcode("/path/to/directory/output.flv", options)
- #   end
- 
 end
