@@ -21,7 +21,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'devise'
 
-gem 'aasm'
+#gem 'aasm'
 
 gem 'faker'
 
