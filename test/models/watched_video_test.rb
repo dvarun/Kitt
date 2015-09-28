@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BacthUsersControllerTest < ActionController::TestCase
+class WatchedVideoTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,3 +1,0 @@
-class BacthUsersController < ApplicationController
-
-end

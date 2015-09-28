@@ -25,6 +25,16 @@ class VideosController < ApplicationController
 
  def show
    @video = Video.find(params[:id])
+   #add user detail who wathed this video
+   @check_user = WatchedVideo.where("user_id = ?",current_user.id)
+   if @check_user.empty?
+    @watched_video = WatchedVideo.new
+    @watched_video.user_id = current_user.id
+    @watched_video.video_id = @video.id
+    @watched_video.batch_id = @video.batch_id
+    @watched_video.save
+   end
+   #end add user detail
    @comment = Comment.new
    @comments = Comment.where("video_id = ?",@video.id)
    @videos = Video.where("batch_id = ?",@video.batch_id)

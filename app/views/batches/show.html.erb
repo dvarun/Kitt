@@ -1,7 +1,7 @@
 <%= javascript_tag do %>
 $(document).ready(function(){
-  $("#user-add").hide();
- });
+ $("#user-add").hide();
+});
 <% end %>
 <div class="row">
  <div class="col-sg-12 col-md-9">
@@ -68,15 +68,15 @@ $(document).ready(function(){
     </div>
     <div class="form-group">
      <label> Name: </label>
-     <%= f.text_field :name %>
+      <%= f.text_field :name %>
     </div>
     <div class="form-group">
-     <%= f.file_field :content %>
+      <%= f.file_field :content %>
     </div>
 
     <div class="form-group">
-     <label> Or Chooe Url: </label>
-     <%= f.text_field :file_path %>
+     <label>Or Chooe Url: </label>
+      <%= f.text_field :file_path %>
     </div>
     <div class="form-group">
      <%= f.submit "Submit",:class => 'btn btn-success' %>
@@ -84,25 +84,46 @@ $(document).ready(function(){
    </div>
    <% end %>
   </div>
+  <div class="row">
+   <div class="col-sg-12 col-md-12">
+    <h3> Video Watched in This Batch</h3>
+    <table class="table table-bordered">
+     <thead>
+      <tr>
+       <th> Username </th>
+       <th> Video name </th>
+       <th> Date Watched </th>
+      </tr>
+     </thead>
+     <% for watched in  @watched_video %>
+     <tr>
+      <td><%= watched.user.firstname + " " + watched.user.lastname  %></td>
+      <td><%= watched.video.name%></td>
+      <td><%= watched.updated_at.strftime("%d %B %Y")%></td>
+     </tr>
+     <% end %>
+    </table>
+   </div>
+  </div>
  </div>
 
  <!-- this is side bar area -->
  <div class="col-sg-12 col-md-3">
   <h3> Videos </h3>
   <table class="table table-hover">
-  <% if !@videos.empty? %>
-  <% for video in @videos %>
-  <tr>
-   <td><%= link_to "#{video.name}", video_path(video.id) %></td>
-   <td><%= link_to "Edit", edit_video_path(video.id)%> </td>
-   <td><%= link_to "Delete", video_path(video.id),method: :delete, data:{confirm: "Are you sure to delete this video?"} %></td>
-  </tr>
-  <% end %>
-  <% else %>
-  <div class="alert alert-dismissable alert-info">
-   No Vieos available as of now!
-  </div>
-  <% end %>
- </table>
+   <% if !@videos.empty? %>
+   <% for video in @videos %>
+   <tr>
+    <td><%= link_to "#{video.name}", video_path(video.id) %></td>
+    <td><%= link_to "Edit", edit_video_path(video.id)%> </td>
+    <td><%= link_to "Delete", video_path(video.id),method: :delete, data:{confirm: "Are you sure to delete this video?"} %></td>
+   </tr>
+   <% end %>
+   <% else %>
+   <div class="alert alert-dismissable alert-info">
+    No Vieos available as of now!
+   </div>
+   <% end %>
+  </table>
  </div>
 </div>

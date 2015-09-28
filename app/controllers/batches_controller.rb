@@ -48,6 +48,8 @@ class BatchesController < ApplicationController
   #@users = BatchUser.joins(:batch).where("batches.id != ?",@batch.id)
   @video = Video.new
   @videos = Video.where("batch_id = ?",@batch.id)
+
+  @watched_video = WatchedVideo.where("batch_id = ?",@batch.id)
  end
 
  def destroy

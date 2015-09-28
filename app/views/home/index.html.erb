@@ -58,13 +58,28 @@
  <% else %>
 
  <div class="col-sg-12 col-md-12">
-  <div>
-   <h4>List of classes enrolled</h4>
-   <% for batches in  @batch_user %>
-   <%= link_to "#{batches.batch.name}", batches_batch_videos_path(:id => batches.batch.id) %><br/>
-   <% end %>
+  <h4>List of classes enrolled</h4>
+  <div class="row">
+   <div class="col-md-6">
+    <% batch_ids = [] %>
+    <% for batches in  @batch_user %>
+    <div class="panel panel-default">
+     <div class="panel-body">
+      <% batch_ids << batches.batch.id %>
+      <%= link_to "#{batches.batch.name}", batches_batch_videos_path(:id => batches.batch.id) %>
+     </div>
+    </div>
+    <% end %>
+   </div>
+   <div class="col-md-6">
 
-   <!-- <li> Times logged in <%= @user.sign_in_count %> </li> -->
+    <%for video in Video.where("batch_id in (?)",batch_ids).order("content_updated_at DESC") %>
+<%= current_user.updated_at  %>
+    <%= video.content_updated_at %>
+    <% break %>
+    <% end %>
+   </table>
+   </div>
   </div>
  </div>
 
