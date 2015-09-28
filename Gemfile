@@ -21,7 +21,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'devise'
 
-#gem 'aasm'
+gem 'aasm'
 
 gem 'faker'
 
@@ -47,7 +47,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "mimemagic"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem "rhc"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
