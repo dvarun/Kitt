@@ -20,15 +20,6 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-# production:
-#   <<: *default
-#   database: db/production.sqlite3
-production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  database: <%=ENV['railsapp']%>
-  host: <%=ENV['$OPENSHIFT_POSTGRESQL_DB_HOST']%>
-  port: <%=ENV['$OPENSHIFT_POSTGRESQL_DB_PORT']%>
-  username: <%=ENV['adminfivu16h']%>
-  password: <%=ENV['U_FvRq1FKrDD']%>
+ production:
+   <<: *default
+   database: db/production.sqlite3
