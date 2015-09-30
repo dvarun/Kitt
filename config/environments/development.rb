@@ -37,6 +37,7 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
 
   Paperclip.options[:command_path] = 'C:\Program Files (x86)\GnuWin32\bin'
+  #Paperclip.options[:command_path] = 'usr/local/bin'
   Paperclip.options[:content_type_mappings] = {
     :flv => "video/x-flv"
   }

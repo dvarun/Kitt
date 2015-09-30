@@ -14,16 +14,20 @@ $(document).ready(function(){
    <h3>List of student in Batch </h3>
    <% if !@batch.users.empty? %>
    <table class="table" id="list-of-student">
-    <tr>
-     <th>Name</th>
-     <th colspan="2">Actions</th>
-    </tr>
-    <% for user in @batch.users %>
-    <tr>
-     <td><%= user.firstname + " " + user.lastname %> </td>
-     <td><%=link_to "Delete",batch_users_delete_user_in_batch_path(user_id: user.id,batch_id: @batch.id), data:{confirm: "Are you sure to delete"} %></td>
-    </tr>
-    <% end %>
+    <thead>
+     <tr>
+      <th>Name</th>
+      <th colspan="2">Actions</th>
+     </tr>
+    </thead>
+    <tbody>
+     <% for user in @batch.users %>
+     <tr>
+      <td><%= user.firstname + " " + user.lastname %> </td>
+      <td><%=link_to "Delete",batch_users_delete_user_in_batch_path(user_id: user.id,batch_id: @batch.id), data:{confirm: "Are you sure to delete"} %></td>
+     </tr>
+     <% end %>
+    </tbody>
    </table>
    <% else %>
    <p> No User found </p>
@@ -33,18 +37,21 @@ $(document).ready(function(){
    <div class="col-sg-12 col-md-12">
     <div id="user-add" class="alert alert-success"><b> User added successfully </b> </div>
     <h3> Add user to batch </h3>
-    <table class="table table-bordered">
-     <tr>
-      <th>Name</th>
-      <th>Add</th>
-     </tr>
-     <% for user in @users %>
-     <tr id="user_<%= user.id %>">
-      <td><%= user.firstname + " " + user.lastname %></td>
-      <!-- <i class="mdi-content-add"></i> -->
-      <td><%= link_to '+', batch_users_add_user_in_batch_path(user_id: user.id,batch_id: @batch.id),remote: true %></td>
-     </tr>
-     <%end%>
+    <table class="table table-bordered" id="myTable">
+     <thead>
+      <tr>
+       <th>Name</th>
+       <th>Add</th>
+      </tr>
+     </thead>
+     <tbody>
+      <% for user in @users %>
+      <tr id="user_<%= user.id %>">
+       <td><%= user.firstname + " " + user.lastname %></td>
+       <td><%= link_to '+', batch_users_add_user_in_batch_path(user_id: user.id,batch_id: @batch.id),remote: true %></td>
+      </tr>
+      <%end%>
+     </tbody>
     </table>
    </div>
   </div>
@@ -68,15 +75,15 @@ $(document).ready(function(){
     </div>
     <div class="form-group">
      <label> Name: </label>
-      <%= f.text_field :name %>
+     <%= f.text_field :name %>
     </div>
     <div class="form-group">
-      <%= f.file_field :content %>
+     <%= f.file_field :content %>
     </div>
 
     <div class="form-group">
      <label>Or Chooe Url: </label>
-      <%= f.text_field :file_path %>
+     <%= f.text_field :file_path %>
     </div>
     <div class="form-group">
      <%= f.submit "Submit",:class => 'btn btn-success' %>
