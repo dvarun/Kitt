@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150928070254) do
+ActiveRecord::Schema.define(version: 20151007072621) do
 
   create_table "batch_users", force: :cascade do |t|
     t.integer  "user_id"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20150928070254) do
     t.string   "content_content_type"
     t.integer  "content_file_size"
     t.datetime "content_updated_at"
+    t.string   "video_code"
   end
 
   create_table "watched_videos", force: :cascade do |t|

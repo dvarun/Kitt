@@ -1,0 +1,29 @@
+<div class="row">
+ <div class="col-sg-12 col-md-12">
+  <h3> Video List</h3>
+  <hr/>
+ </div>
+ <div class="col-sg-12 col-md-12">
+  <% if can? :manage, :all %>
+  <table class="table table-bordered">
+   <thead>
+    <tr>
+     <th>Name</th>
+     <th>Batch</th>
+    </tr>
+   </thead>
+   <tbody>
+    <% for video in @videos %>
+    <tr>
+     <td><%= video.name %></td>
+     <td><%= video.batch.name %></td>
+    </tr>
+    <% end %>
+   </tbody>
+  </table>
+  <% else %>
+  No Content found here!
+  <%= link_to "Go Back",root_url %>
+  <% end %>
+ </div>
+</div>

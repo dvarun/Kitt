@@ -4,7 +4,7 @@ class VideosController < ApplicationController
  load_and_authorize_resource
 
  def index
-
+  @videos = Video.all
  end
 
  def new
