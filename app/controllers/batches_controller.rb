@@ -70,7 +70,7 @@ class BatchesController < ApplicationController
 
  private
  def batch_params
-  params[:batch].permit(:name,:description,:start_date,:user_ids=>[])
+  params[:batch].permit(:name,:description,:start_date,:is_complete,:user_ids=>[])
  end
 
 end

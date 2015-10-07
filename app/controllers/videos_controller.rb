@@ -67,7 +67,7 @@ class VideosController < ApplicationController
 
  private
  def video_params
-  params[:video].permit(:name,:batch_id,:file_path,:content,:is_complete)
+  params[:video].permit(:name,:batch_id,:file_path,:content)
  end
 
 end
