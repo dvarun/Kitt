@@ -3,15 +3,15 @@
   <%= form_for @batch,html: {:class => 'form-horizontal'} do |f| %>
   <% if @batch.errors.any? %>
 
-   <div class="alert alert-danger">
-    <h3> Errors from saving the <%= @batch.class %> </h3>
-    <ul>
-     <% for msg in @batch.errors.full_messages %>
-     <li> <%= msg %></li>
-     <% end %>
-    </ul>
-   </div>
-  
+  <div class="alert alert-danger">
+   <h3> Errors from saving the <%= @batch.class %> </h3>
+   <ul>
+    <% for msg in @batch.errors.full_messages %>
+    <li> <%= msg %></li>
+    <% end %>
+   </ul>
+  </div>
+
   <% end %>
   <div class="form-group">
    <label class="col-lg-1 control-label">Name: </label>
@@ -31,9 +31,18 @@
    <label class="col-lg-1 control-label">Start Date </label>
    <div class="col-lg-4">
     <%#= f.date_select :start_date, order: [:day, :month, :year], include_blank: true, start_year: Date.today.year,:class => "from-control" %>
-    <%= f.date_select :start_date, { :order => [:day, :month, :year], :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year'} }, {:class => "form-control"} %>
+    <%#= f.date_select :start_date, { :order => [:day, :month, :year], :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year'} }, {:class => "form-control"} %>
+    <%= f.date_field :start_date,class: "form-control" %>
    </div>
   </div>
+
+  <div class="form-group">
+   <label class="col-lg-1 control-label">Is Completed?</label>
+   <div class="col-lg-4">
+    <%= f.check_box :is_complete,{},"true","false" %>
+   </div>
+  </div>
+
   <div class="form-group">
    <div class="col-lg-1">
     <%= f.submit nil, :class => 'btn btn-primary' %>

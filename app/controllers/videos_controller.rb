@@ -44,6 +44,8 @@ class VideosController < ApplicationController
   @video = Video.find(params[:id])
   @video.content.destroy
   @video.destroy
+  @wv = WatchedVideo.where("video_id = ?",@video.id)
+  @wv.delete_all
   redirect_to batch_path(@video.batch_id), notice: "successfully Deleted the Video"
  end
 
@@ -65,7 +67,7 @@ class VideosController < ApplicationController
 
  private
  def video_params
-  params[:video].permit(:name,:batch_id,:file_path,:content)
+  params[:video].permit(:name,:batch_id,:file_path,:content,:is_complete)
  end
 
 end
