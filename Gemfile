@@ -10,7 +10,7 @@ end
 #postgres for production
 group :production do
 gem 'pg'
-gem 'shelly-dependencies'
+#gem 'shelly-dependencies'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
