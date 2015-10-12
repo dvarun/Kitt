@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 #sql lite for development
@@ -10,7 +9,6 @@ end
 #postgres for production
 group :production do
 gem 'pg'
-#gem 'shelly-dependencies'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
