@@ -1,3 +1,10 @@
+<%= javascript_tag do %>
+jQuery(function($){
+    //all jQuery code which uses $ should be here.
+      $("#batch_start_date").datepicker();
+});
+
+<% end %>
 <div class="row">
  <div class="col-md-12">
   <%= form_for @batch,html: {:class => 'form-horizontal'} do |f| %>
