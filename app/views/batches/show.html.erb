@@ -2,6 +2,10 @@
 $(document).ready(function(){
  $("#user-add").hide();
 });
+$(document).ready(function(){
+ $('#list-of-student').DataTable();
+ $('#tbl-user-add').DataTable();
+});
 <% end %>
 <div class="row">
  <div class="col-sg-12 col-md-9">
@@ -17,7 +21,7 @@ $(document).ready(function(){
     <thead>
      <tr>
       <th>Name</th>
-      <th colspan="2">Actions</th>
+      <th>Actions</th>
      </tr>
     </thead>
     <tbody>
@@ -37,7 +41,7 @@ $(document).ready(function(){
    <div class="col-sg-12 col-md-12">
     <div id="user-add" class="alert alert-success"><b> User added successfully </b> </div>
     <h3> Add user to batch </h3>
-    <table class="table table-bordered" id="myTable">
+    <table class="table table-bordered" id="tbl-user-add">
      <thead>
       <tr>
        <th>Name</th>

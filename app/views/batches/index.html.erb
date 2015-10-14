@@ -1,29 +1,82 @@
+<%= javascript_tag do %>
+$(document).ready(function(){
+ $('#tbl-ongoing').DataTable();
+ $('#tbl-completed').DataTable();
+});
+<% end %>
 <div class="row">
-  <div class="col-sg-12 col-md-12">
-    <h3> Batches</h3>
-    <hr/>
-  </div>
+ <div class="col-sg-12 col-md-12">
+  <h3> Batches</h3>
+  <hr/>
+ </div>
 </div>
 <div class="row">
-  <div class="col-sg-12 col-md-12">
-    <table class="table table-bordered">
+ <div class="col-sg-12 col-md-12">
+
+  <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+   <li class="active"><a href="#on-going" data-toggle="tab">On Going</a></li>
+   <li><a href="#completed" data-toggle="tab">Completed</a></li>
+  </ul>
+  <div id="myTabContent" class="tab-content">
+   <div class="tab-pane fade active in" id="on-going">
+    <h4>On Going Classes </h4>
+    <!-- on going classes starts here -->
+    <table class="table table-bordered" id="tbl-ongoing">
+     <thead>
       <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Start Date</th>
-        <th colspan="3">Actions</th>
+       <th>Name</th>
+       <th>Description</th>
+       <th>Start Date</th>
+       <th>Actions</th>
+       <th></th>
+       <th></th>
       </tr>
-      <% for batch in @batches %>
+     </thead>
+     <tbody>
+      <% for batch in @batch_ongoing %>
       <tr>
-        <td><%= batch.name %></td>
-        <td><%= batch.description %></td>
-        <td><%= batch.start_date.strftime("%d %B %Y") %></td>
-        <td><%= link_to "Show" ,batch_path(batch.id)%></td>
-        <td><%= link_to "Edit", edit_batch_path(batch.id) %></td>
-        <td><%= link_to "Delete",batch_path(batch.id), method: :delete, data:{confirm: "Are you sure to delete this Batch?"}  %></td>
+       <td><%= batch.name %></td>
+       <td><%= batch.description %></td>
+       <td><%= batch.start_date.strftime("%d %B %Y") %></td>
+       <td><%= link_to "Show" ,batch_path(batch.id)%></td>
+       <td><%= link_to "Edit", edit_batch_path(batch.id) %></td>
+       <td><%= link_to "Delete",batch_path(batch.id), method: :delete, data:{confirm: "Are you sure to delete this Batch?"}  %></td>
       </tr>
       <% end %>
+     </tbody>
     </table>
-    <%= link_to "Add batch", new_batch_path, class:"btn btn-primary" %>
+    <!-- on going classes ends here -->
+   </div>
+   <div class="tab-pane fade" id="completed">
+    <!-- Completed classes starts here -->
+    <h4>Completed Classes </h4>
+    <table class="table table-bordered" id="tbl-completed">
+     <thead>
+      <tr>
+       <th>Name</th>
+       <th>Description</th>
+       <th>Start Date</th>
+       <th>Actions</th>
+       <th></th>
+       <th></th>
+      </tr>
+     </thead>
+     <tbody>
+      <% for batch in @batch_completed %>
+      <tr>
+       <td><%= batch.name %></td>
+       <td><%= batch.description %></td>
+       <td><%= batch.start_date.strftime("%d %B %Y") %></td>
+       <td><%= link_to "Show" ,batch_path(batch.id)%></td>
+       <td><%= link_to "Edit", edit_batch_path(batch.id) %></td>
+       <td><%= link_to "Delete",batch_path(batch.id), method: :delete, data:{confirm: "Are you sure to delete this Batch?"}  %></td>
+      </tr>
+      <% end %>
+     </tbody>
+    </table>
+    <!-- Completed classes ends here -->
+   </div>
   </div>
+  <%= link_to "Add batch", new_batch_path, class:"btn btn-primary" %>
+ </div>
 </div>

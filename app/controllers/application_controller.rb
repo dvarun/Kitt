@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   redirect_to root_url, alert: exception.message
  end
 
+ rescue_from ActiveRecord::RecordNotFound do |exception|
+  redirect_to root_url,notice: "The Page you're looking for is not available,please contact admin!"
+ end
+
  before_filter :configure_permitted_parameters, if: :devise_controller?
 
  protected

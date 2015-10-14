@@ -4,7 +4,8 @@ class BatchesController < ApplicationController
  skip_authorize_resource :only => :batch_videos
 
  def index
-  @batches = Batch.all
+  @batch_ongoing = Batch.where("is_complete = ?",false)
+  @batch_completed = Batch.where("is_complete = ?",true)
  end
 
  def new
