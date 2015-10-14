@@ -26,9 +26,12 @@
     <%=f.hidden_field :video_id,:value => @video.id %>
     <%=f.hidden_field :user_id,:value => current_user.id %>
     <div class="form-group">
-     <label>Comment:</label><br/>
-     <%= f.text_area :description%>
+     <label class="col-lg-1 control-label">Comment:</label>
+     <div class="col-lg-5">
+      <%= f.text_area :description,cols: 20,rows: 3,class: "form-control"%>
+     </div>
     </div>
+
     <div class="form-group">
      <%= f.submit "Submit",:class => 'btn btn-primary' %>
     </div>
