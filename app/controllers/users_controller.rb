@@ -47,12 +47,14 @@ class UsersController < ApplicationController
 
   def show
    @user = User.find(params[:id])
+   @batch_user = BatchUser.where("user_id = ?",@user.id)
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
     redirect_to user_path, notice: "successfully Deleted the user"
+
   end
 
   private

@@ -72,12 +72,16 @@
   <h4>List of classes enrolled</h4>
   <div class="row">
    <div class="col-md-6">
+    <% if !@batch_user.empty? %>
     <% for batches in  @batch_user %>
     <div class="panel panel-default">
      <div class="panel-body">
       <%= link_to "#{batches.batch.name}", batches_batch_videos_path(:id => batches.batch.id) %>
      </div>
     </div>
+    <% end %>
+    <% else %>
+     You're not enrolled into any classes as of now
     <% end %>
    </div>
    <div class="col-md-6">

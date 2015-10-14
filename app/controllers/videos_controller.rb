@@ -25,6 +25,12 @@ class VideosController < ApplicationController
 
  def show
    @video = Video.find(params[:id])
+
+   @batch_user = BatchUser.where("user_id = ? and batch_id = ?",current_user.id,@video.batch_id)
+   if @batch_user.empty?
+    redirect_to root_url,notice: "The Video doesn't exist"
+   end
+
    #add user detail who wathed this video
    @check_user = WatchedVideo.where("user_id = ? and video_id=? and batch_id=?",current_user.id,@video.id,@video.batch_id)
    if @check_user.empty?

@@ -4,13 +4,18 @@
   <hr/>
   <ul>
    <li>Email: <%= @user.email %> </li>
-   <li> Role Assigned </li>
-   <ul>
+   <li> Role Assigned:
     <% for user in @user.roles %>
-    <li> <%= user.name %> </li>
+    <%= user.name %>
     <% end %>
-   </ul>
+   </li>
    <li> Times logged in <%= @user.sign_in_count %> </li>
   </ul>
+  <h4> Classes Enrolled </h4>
+  <ul>
+  <% for batchuser in @batch_user %>
+   <li><%= batchuser.batch.name %></li>
+  <% end %>
+ </ul>
  </div>
 </div>

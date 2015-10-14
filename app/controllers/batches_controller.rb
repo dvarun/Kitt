@@ -56,7 +56,7 @@ class BatchesController < ApplicationController
  def destroy
   @batch = Batch.find(params[:id])
   @batch.destroy
-  redirect_to :back, notice: "Successfully deleted the user"
+  redirect_to batches_path, notice: "Successfully deleted the Batch"
  end
 
  def batch_videos
