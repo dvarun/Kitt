@@ -1,3 +1,8 @@
+<%= javascript_tag do %>
+$(document).ready(function(){
+ $('#tbl-video').DataTable();
+});
+<% end %>
 <div class="row">
  <div class="col-sg-12 col-md-12">
   <h3> Video List</h3>
@@ -5,18 +10,20 @@
  </div>
  <div class="col-sg-12 col-md-12">
   <% if can? :manage, :all %>
-  <table class="table table-bordered">
+  <table class="table table-bordered" id="tbl-video">
    <thead>
     <tr>
      <th>Name</th>
      <th>Batch</th>
+     <th>Video Code </th>
     </tr>
    </thead>
    <tbody>
     <% for video in @videos %>
     <tr>
-     <td><%= video.name %></td>
-     <td><%= video.batch.name %></td>
+     <td><%= link_to "#{video.name}",video_path(video.id) %></td>
+     <td><%= link_to "#{video.batch.name}",batch_path(video.batch.name)%></td>
+     <td><%= video.video_code %>
     </tr>
     <% end %>
    </tbody>

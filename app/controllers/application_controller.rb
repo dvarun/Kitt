@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
  end
 
  rescue_from ActiveRecord::RecordNotFound do |exception|
-  redirect_to root_url,notice: "The Page you're looking for is not available,please contact admin!"
+  redirect_to root_url,notice: "The Page you're looking for is not available,please contact admin!#{exception}"
  end
 
  before_filter :configure_permitted_parameters, if: :devise_controller?
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
  	  method = "#{resource}_params"
  	  params[resource] &&= send(method) if respond_to?(method, true)
  	end
-  #### end of important
+  #### end of cancan workaround
 
  def is_admin?
   current_user.roles.pluck(:name).include?("ADMIN") || current_user.roles.pluck(:name).include?("admin")

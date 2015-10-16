@@ -43,10 +43,8 @@ class BatchesController < ApplicationController
   for users in @batch.users
    user << users.id
   end
-  user << 1 #this one for avoiding the admin user
-  @users = User.where("id not in (?)",user)
 
-  #@users = BatchUser.joins(:batch).where("batches.id != ?",@batch.id)
+  @users = User.where("id not in (?)",user)
   @video = Video.new
   @videos = Video.where("batch_id = ?",@batch.id)
 
@@ -56,6 +54,8 @@ class BatchesController < ApplicationController
  def destroy
   @batch = Batch.find(params[:id])
   @batch.destroy
+  @video = Video.where("batch_id = ?",@batch.id)
+  @video.destroy_all
   redirect_to batches_path, notice: "Successfully deleted the Batch"
  end
 

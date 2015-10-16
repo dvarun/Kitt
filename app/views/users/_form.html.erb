@@ -13,33 +13,31 @@
   </div>
   <% end %>
 
-
-
   <div class="form-group">
    <label class="col-lg-1 control-label">Firtname: </label>
    <div class="col-lg-4">
-    <%= f.text_field :firstname,class: "form-control" %>
+    <%= f.text_field :firstname,class: "form-control",required: true %>
    </div>
   </div>
 
   <div class="form-group">
    <label class="col-lg-1 control-label">Lastname: </label>
    <div class="col-lg-4">
-    <%= f.text_field :lastname,class: "form-control" %>
+    <%= f.text_field :lastname,class: "form-control",required: true %>
    </div>
   </div>
 
   <div class="form-group">
    <label class="col-lg-1 control-label">Email: </label>
    <div class="col-lg-4">
-    <%= f.email_field :email,class: "form-control" %>
+    <%= f.email_field :email,class: "form-control",required: true %>
    </div>
   </div>
 
   <div class="form-group">
    <label class="col-lg-1 control-label">password: </label>
    <div class="col-lg-4">
-    <%= f.password_field :password,class: "form-control" %>
+    <%= f.password_field :password,class: "form-control",required: true %>
    </div>
   </div>
 
@@ -48,7 +46,7 @@
    <label class="col-lg-1 control-label"> Role: </label>
    <div class="col-lg-4">
     <%#= permission_fields.collection_select :role_id,Role.all,:id,:name,prompt: "Select Role" %>
-    <%= permission_fields.collection_select( :role_id,Role.all, :id, :name, {:prompt => "Select Role"} ,{:class => "form-control"}) %>
+    <%= permission_fields.collection_select( :role_id,Role.all, :id, :name, {:prompt => "Select Role"} ,{:class => "form-control",:required => true}) %>
    </div>
    <% end %>
   </div>
