@@ -18,3 +18,4 @@
 !/log/.keep
 /tmp
 /.c9/*
+/config/initializers/setup_mailer.rb
