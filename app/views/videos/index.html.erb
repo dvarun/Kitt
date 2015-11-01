@@ -19,12 +19,18 @@ $(document).ready(function(){
     </tr>
    </thead>
    <tbody>
+    <% if @videos.empty? %>
     <% for video in @videos %>
     <tr>
      <td><%= link_to "#{video.name}",video_path(video.id) %></td>
      <td><%= link_to "#{video.batch.name}",batch_path(video.batch.name)%></td>
      <td><%= video.video_code %>
     </tr>
+    <% end %>
+    <% else %>
+    <td> No video available </td>
+    <td></td>
+    <td></td>
     <% end %>
    </tbody>
   </table>

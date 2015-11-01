@@ -43,7 +43,7 @@ class BatchesController < ApplicationController
   for users in @batch.users
    user << users.id
   end
- 
+
   @users = User.where("id not in (?)",user)
 
   #@users = BatchUser.joins(:batch).where("batches.id != ?",@batch.id)
@@ -64,7 +64,7 @@ class BatchesController < ApplicationController
  def batch_videos
   if !params[:id].nil?
    @batch = Batch.find(params[:id])
-   @video = Video.where("batch_id = ?",@batch.id)
+   @video = Video.where("batch_id = ?",@batch.id).order('id desc')
   else
    #return empty array to show there's no video
    @video = []
