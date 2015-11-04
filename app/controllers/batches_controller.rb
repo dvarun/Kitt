@@ -44,7 +44,13 @@ class BatchesController < ApplicationController
    user << users.id
   end
 
-  @users = User.where("id not in (?)",user)
+  #if no user is in Batch fetch all students
+  if !users.nil?
+   @users = User.where("id not in (?)",user)
+  else
+   @users = User.all
+  end
+  #end of checking
 
   #@users = BatchUser.joins(:batch).where("batches.id != ?",@batch.id)
   @video = Video.new
