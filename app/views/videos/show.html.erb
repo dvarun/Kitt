@@ -15,9 +15,9 @@
       <param name="swlivevonnect" value="true" />
       <param name="cachebusting" value="false">
       <% if @video.content.size.nil? %>
-      <param name="flashvars"   value="skin=http://localhost:3000/mySkin.swf&video=http://localhost:3000/<%= @video.file_path %>"/>
+      <param name="flashvars"   value="skin=http://<%=request.host + ":#{request.port}"%>/mySkin.swf&video=http://<%=request.host + ":#{request.port}"%>/<%= @video.file_path %>"/>
       <% else %>
-      <param name="flashvars"   value="skin=http://localhost:3000/mySkin.swf&video=http://localhost:3000<%= @video.content.url %>"/>
+      <param name="flashvars"   value="skin=http://<%=request.host + ":#{request.port}"%>/mySkin.swf&video=http://<%=request.host + ":#{request.port}"%><%= @video.content.url %>"/>
       <% end %>
       <a href="http://www.adobe.com/go/flashplayer/">Download it from Adobe.</a>
       <a href="http://gokercebeci.com/dev/f4player" title="flv player">flv player</a>
