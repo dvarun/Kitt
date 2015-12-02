@@ -3,4 +3,4 @@ rvm:
   - 2.0.0
 script:
   - bundle install
-  - rake db:migrate
+  - bundle exec rake db:migrate
