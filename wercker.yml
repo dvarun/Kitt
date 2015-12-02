@@ -21,7 +21,7 @@ build:
     # Read more about steps on our dev center:
     # http://devcenter.wercker.com/docs/steps/index.html
     steps:
-        - bundle-install
+        - bundle install
         - script:
             name: setup DB
             code: bundle exec rake db:migrate
