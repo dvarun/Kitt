@@ -32,6 +32,7 @@ gem 'chartkick'
 gem "paperclip", "~> 4.2.4"
 
 #gem 'paperclip-av-transcoder'
+gem 'rake', '~> 10.4', '>= 10.4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
